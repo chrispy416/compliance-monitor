@@ -1,6 +1,4 @@
-import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
-import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import ResultCard from "./ResultCard.tsx";
