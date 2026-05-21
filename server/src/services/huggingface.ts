@@ -14,7 +14,6 @@ export async function analyze(request: AnalyzeRequest): Promise<AnalyzeResponse>
       inputs: request.action,
       parameters: {
         candidate_labels: ['complies', 'deviates', 'unclear'],
-        hypothesis_template: `This action {} with the guideline: ${request.guideline}`
       }
     }),
   });

@@ -3,46 +3,44 @@ import Stack from '@mui/material/Stack';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import ResultCard from "./ResultCard.tsx";
 
-const Results = () => {
+const Results = ({ data }) => {
   return(
     <Stack spacing={2}>
       <Typography variant="h6" gutterBottom>
         Results
       </Typography>
-      <Stack spacing={2} direction="row">
-        <Card sx={{ minWidth: 200 }}>
-          <CardContent>
-            <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
-              Confidence
+      {data ?
+        (
+          <>
+            <Typography variant="subtitle2" gutterBottom>
+              {new Date(data.timestamp).toLocaleString()}
             </Typography>
-            <Typography variant="h5" component="div">
-              96%
-            </Typography>
-          </CardContent>
-        </Card>
-        <Card sx={{ minWidth: 200 }}>
-          <CardContent>
-            <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
-              Top Label
-            </Typography>
-            <Typography variant="h5" component="div">
-              complies
-            </Typography>
-          </CardContent>
-        </Card>
-      </Stack>
-      <TextField
-        id="results-inputed-values"
-        multiline
-        rows={4}
-        value="hello"
-        slotProps={{
-          input: {
-            readOnly: true,
-          },
-        }}
-      />
+            <Stack spacing={2} direction="row">
+              <ResultCard label="Confidence" value={data.confidence}/>
+              <ResultCard label="Analysis result" value={data.result}/>
+            </Stack>
+            <TextField
+              id="results-inputed-values"
+              multiline
+              rows={4}
+              value={`action: ${data.action}\nguideline: ${data.guideline}`}
+              slotProps={{
+                input: {
+                  readOnly: true,
+                },
+              }}
+            />
+          </>
+        ):
+        (
+          <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
+            Submit an analysis to see results.
+          </Typography>
+        )
+      }
+
     </Stack>
   )
 }

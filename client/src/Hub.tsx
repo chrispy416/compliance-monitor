@@ -5,9 +5,14 @@ import Grid from '@mui/material/Grid';
 import Divider from '@mui/material/Divider';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import { useAnalyze } from './hooks/useAnalyze'
 
 const Hub = () => {
+  const { result, isLoading, error, analyze } = useAnalyze();
 
+  const handleSubmit = async (action: string, guideline: string) => {
+    await analyze({ action, guideline});
+  }
   return (
     <Container maxWidth="lg">
       <Typography variant="h4" gutterBottom>
@@ -15,11 +20,11 @@ const Hub = () => {
       </Typography>
       <Grid container spacing={2} rowSpacing={4} columns={16}>
         <Grid size={6}>
-          <AnalyzeForm/>
+          <AnalyzeForm onSubmit={handleSubmit} isLoading={isLoading}/>
         </Grid>
         <Divider orientation="vertical" flexItem />
         <Grid size={6}>
-          <Results />
+          <Results data={result} />
         </Grid>
         <Grid size={12}>
           History
