@@ -2,7 +2,12 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 
-const ResultCard = ({ label, value }) => {
+interface ResultsCardProp {
+  label: string
+  value: number | string
+}
+
+const ResultCard = ({ label, value }: ResultsCardProp) => {
   return (
     <Card sx={{ minWidth: 200 }}>
       <CardContent>

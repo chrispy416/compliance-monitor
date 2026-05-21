@@ -5,7 +5,12 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import Typography from '@mui/material/Typography';
 
-const AnalyzeForm = ({ onSubmit, isLoading }) => {
+interface AnalyzeFormProps {
+  onSubmit: (action: string, guideLine: string) => void
+  isLoading: boolean
+}
+
+const AnalyzeForm = ({ onSubmit, isLoading }: AnalyzeFormProps) => {
   const [action, setAction] = useState('');
   const [guideLine, setGuideLine] = useState('');
 

@@ -1,5 +1,6 @@
 import './Hub.css'
 import AnalyzeForm from "./components/AnalyzeForm.tsx";
+import History from "./components/History.tsx"
 import Results from "./components/Results.tsx"
 import Grid from '@mui/material/Grid';
 import Divider from '@mui/material/Divider';
@@ -27,7 +28,7 @@ const Hub = () => {
           <Results data={result} />
         </Grid>
         <Grid size={12}>
-          History
+          <History />
         </Grid>
       </Grid>
     </Container>

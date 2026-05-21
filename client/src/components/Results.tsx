@@ -2,8 +2,13 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import ResultCard from "./ResultCard.tsx";
+import type {AnalyzeResponse} from "../types/types.ts";
 
-const Results = ({ data }) => {
+interface ResultsProp {
+  data: AnalyzeResponse
+}
+
+const Results = ({ data }: ResultsProp) => {
   return(
     <Stack spacing={2}>
       <Typography variant="h6" gutterBottom>
