@@ -5,7 +5,7 @@ import ResultCard from "./ResultCard.tsx";
 import type {AnalyzeResponse} from "../types/types.ts";
 
 interface ResultsProp {
-  data: AnalyzeResponse
+  data: AnalyzeResponse | null
 }
 
 const Results = ({ data }: ResultsProp) => {

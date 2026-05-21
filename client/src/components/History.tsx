@@ -22,13 +22,15 @@ const History = ({ history, onEdit }: HistoryProps) => {
         ) :
         (
           <>
-            {history.map((item, index) => (
-              <HistoryCard
-                key={index}
-                data={item}
-                onEdit={onEdit}
-              />
-            ))}
+            <Stack spacing={2} direction="row">
+              {history.map((item, index) => (
+                <HistoryCard
+                  key={index}
+                  data={item}
+                  onEdit={onEdit}
+                />
+              ))}
+            </Stack>
           </>
         )}
     </Stack>

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -8,11 +7,13 @@ import Typography from '@mui/material/Typography';
 interface AnalyzeFormProps {
   onSubmit: (action: string, guideLine: string) => void
   isLoading: boolean
+  action: string,
+  guideLine: string,
+  onActionChange: (value: string) => void
+  onGuideLineChange: (value: string) => void
 }
 
-const AnalyzeForm = ({ onSubmit, isLoading }: AnalyzeFormProps) => {
-  const [action, setAction] = useState('');
-  const [guideLine, setGuideLine] = useState('');
+const AnalyzeForm = ({ onSubmit, isLoading, action, guideLine, onActionChange, onGuideLineChange }: AnalyzeFormProps) => {
 
   const handleSubmit = () => {
     if(!action.trim() || !guideLine.trim()) {
@@ -31,7 +32,7 @@ const AnalyzeForm = ({ onSubmit, isLoading }: AnalyzeFormProps) => {
         multiline
         rows={4}
         value={action}
-        onChange={(e) => setAction(e.target.value)}
+        onChange={(e) => onActionChange(e.target.value)}
       />
       <TextField
         id="outlined-multiline-static"
@@ -39,7 +40,7 @@ const AnalyzeForm = ({ onSubmit, isLoading }: AnalyzeFormProps) => {
         multiline
         rows={4}
         value={guideLine}
-        onChange={(e) => setGuideLine(e.target.value)}
+        onChange={(e) => onGuideLineChange(e.target.value)}
       />
       <Button onClick={handleSubmit} loading={isLoading} variant="contained" endIcon={<SendIcon />}>
         Send

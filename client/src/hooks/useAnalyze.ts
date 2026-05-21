@@ -35,12 +35,14 @@ export const useAnalyze = () => {
         isLoading: false,
         error: null
       });
+      return data;
     } catch(err) {
       setState({
         result: null,
         isLoading: false,
         error: `Something went wrong: ${err}`
-      })
+      });
+      return null;
     }
   };
 
