@@ -11,6 +11,11 @@ const PORT = process.env.PORT || 3001
 app.use(cors())
 app.use(express.json())
 
+// for playwright to check if server is running
+app.get('/health', (_req, res) => {
+  res.status(200).json({ status: 'ok' })
+})
+
 app.use('/analyze', analyzeRouter)
 
 app.listen(PORT, () => {
