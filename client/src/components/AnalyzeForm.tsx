@@ -16,7 +16,7 @@ interface AnalyzeFormProps {
 const AnalyzeForm = ({ onSubmit, isLoading, action, guideLine, onActionChange, onGuideLineChange }: AnalyzeFormProps) => {
 
   const handleSubmit = () => {
-    if(!action.trim() || !guideLine.trim()) {
+    if(!action.trim()) {
       return
     }
     onSubmit(action.trim(), guideLine.trim());

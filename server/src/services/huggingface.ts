@@ -4,6 +4,22 @@ const HF_API_URL = 'https://router.huggingface.co/hf-inference/models/facebook/b
 const TIMEOUT_MS = 60000;
 
 export async function analyze(request: AnalyzeRequest): Promise<AnalyzeResponse> {
+  // handle no guideline edge case (chose to do it this way because model was not happy with no guidelines)
+  const NO_GUIDELINE = ['no guidelines', 'none', 'n/a', 'no guideline exists']
+
+  const hasNoGuideline = request.guideline === '' || NO_GUIDELINE.some(phrase => request.guideline.toLowerCase().includes(phrase));
+
+  if(hasNoGuideline) {
+    return {
+      action: request.action,
+      guideline: request.guideline,
+      result: 'UNCLEAR',
+      confidence: 0,
+      timestamp: new Date().toISOString(),
+    };
+  }
+
+  // happy path with guideline
   const response = await fetch(HF_API_URL, {
     headers: {
       Authorization: `Bearer ${process.env.HF_TOKEN}`,

@@ -8,8 +8,8 @@ router.post('/', async (req: Request, res: Response) => {
 
   console.log('Request body:', req.body)
 
-  if (!action || !guideline) {
-    return res.status(400).json({ error: 'action and guideline are required' })
+  if (!action) {
+    return res.status(400).json({ error: 'action is required' })
   }
 
   try {

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type {AnalyzeResponse} from "../types/types.ts";
 
 const STORAGE_KEY = 'compliance-monitor-history';
-const MAX_STORAGE = 10;
+const MAX_STORAGE = 4;
 
 const fetchFromStorage = () => {
   try {
