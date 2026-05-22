@@ -94,3 +94,39 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 4. The result will show as **COMPLIES**, **DEVIATES**, or **UNCLEAR** with a confidence score
 5. Past analyses are saved in the history panel and persist across page refreshes
 6. Click **Edit** on any history item to reload it into the form for re-analysis
+
+## Running Tests
+
+The E2E tests use [Playwright](https://playwright.dev/) and are located in `client/tests/`. Playwright will automatically start both the Vite dev server and the Express server before running the tests — no need to start them manually.
+
+### Install Playwright browsers (first time only)
+
+```bash
+cd client
+npx playwright install
+```
+
+### Run tests headlessly
+
+```bash
+cd client
+npm run test:e2e
+```
+
+### Run tests with the Playwright UI (visual, easier to debug)
+
+```bash
+cd client
+npm run test:e2e:ui
+```
+
+### Run tests in debug mode
+
+```bash
+cd client
+npm run test:e2e:debug
+```
+
+Tests run across Chromium, Firefox, and WebKit by default. After a headless run, an HTML report will open automatically in your browser.
+
+> **Note:** The HuggingFace API can be slow — each test has a 60 second timeout to account for this.
