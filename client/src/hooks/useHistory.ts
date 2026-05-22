@@ -18,7 +18,7 @@ export const useHistory = () => {
   const [history, setHistory] = useState<AnalyzeResponse[]>(fetchFromStorage);
 
   const addToHistory = (result: AnalyzeResponse) => {
-    const updatedHistory = [result, ...history].splice(0, MAX_STORAGE);
+    const updatedHistory = [result, ...history].slice(0, MAX_STORAGE);
     setHistory(updatedHistory);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedHistory));
   }

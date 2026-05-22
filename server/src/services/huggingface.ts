@@ -1,7 +1,6 @@
 import { AnalyzeRequest, AnalyzeResponse } from '../types/types'
 
 const HF_API_URL = 'https://router.huggingface.co/hf-inference/models/facebook/bart-large-mnli';
-const TIMEOUT_MS = 60000;
 
 export async function analyze(request: AnalyzeRequest): Promise<AnalyzeResponse> {
   // handle no guideline edge case (chose to do it this way because model was not happy with no guidelines)

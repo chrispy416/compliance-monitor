@@ -27,7 +27,7 @@ const AnalyzeForm = ({ onSubmit, isLoading, action, guideLine, onActionChange, o
         Analyze
       </Typography>
       <TextField
-        id="outlined-multiline-static"
+        id="action-input"
         label="Action"
         multiline
         rows={4}
@@ -35,7 +35,7 @@ const AnalyzeForm = ({ onSubmit, isLoading, action, guideLine, onActionChange, o
         onChange={(e) => onActionChange(e.target.value)}
       />
       <TextField
-        id="outlined-multiline-static"
+        id="guideline-input"
         label="Guideline"
         multiline
         rows={4}

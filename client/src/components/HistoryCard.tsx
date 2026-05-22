@@ -19,7 +19,7 @@ const HistoryCard = ({ data, onEdit }: HistoryCardProps) => {
       <CardContent>
         <Stack spacing={2} direction="column">
           <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
-            {timestamp}
+            {new Date(timestamp).toLocaleString()}
           </Typography>
           <Chip label={result} color={chipColor} />
           <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
